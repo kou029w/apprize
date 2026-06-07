@@ -1,0 +1,14 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+name: test
+on: push
+jobs:
+  main:
+    runs-on: self-hosted
+    steps:
+      - run: apk add nodejs make
+      - uses: https://github.com/actions/checkout@v6
+      - uses: https://github.com/actions/setup-go@v6
+        with:
+          go-version-file: go.mod
+      - name: Test
+        run: make test

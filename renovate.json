@@ -1,9 +1,4 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:best-practices",
-    ":automergeAll",
-    ":automergeBranch",
-    ":skipStatusChecks"
-  ]
+  "extends": ["config:best-practices", ":automergeAll", ":automergeBranch"]
 }
