@@ -14,7 +14,6 @@ import (
 	"git.fogtype.com/nebel/apprize/internal/config"
 	"git.fogtype.com/nebel/apprize/internal/notify"
 	"git.fogtype.com/nebel/apprize/internal/server"
-	"git.fogtype.com/nebel/apprize/internal/store"
 )
 
 // version is overridable at build time via -ldflags.
@@ -24,10 +23,7 @@ func main() {
 	cfg := config.FromEnv()
 
 	flag.StringVar(&cfg.Bind, "bind", cfg.Bind, "listen address (env APPRIZE_BIND)")
-	flag.StringVar(&cfg.DBPath, "db", cfg.DBPath, "sqlite database path, :memory: for ephemeral (env APPRIZE_DB_PATH)")
 	flag.StringVar(&cfg.APIKey, "api-key", cfg.APIKey, "optional API secret (env APPRIZE_API_KEY)")
-	flag.Int64Var(&cfg.ConfigMaxKB, "config-max-length", cfg.ConfigMaxKB, "request body limit in KB (env APPRIZE_CONFIG_MAX_LENGTH)")
-	flag.StringVar(&cfg.DefaultConfigID, "default-config-id", cfg.DefaultConfigID, "default key for keyless persistent routes (env APPRIZE_DEFAULT_CONFIG_ID)")
 	flag.Parse()
 
 	if err := run(cfg); err != nil {
@@ -36,31 +32,14 @@ func main() {
 }
 
 func run(cfg config.Config) error {
-	var st store.Store
-	if cfg.DBPath == "" || cfg.DBPath == ":memory:" {
-		st = store.NewMemory()
-	} else {
-		s, err := store.OpenSQLite(cfg.DBPath)
-		if err != nil {
-			return err
-		}
-		st = s
-	}
-	defer st.Close()
-
 	h := server.New(server.Deps{
-		Notifier:        notify.NewApprise(),
-		Store:           st,
-		StatelessURLs:   cfg.StatelessURLs,
-		ConfigLock:      cfg.ConfigLock,
-		Admin:           cfg.Admin,
-		RecursionMax:    cfg.RecursionMax,
-		DenyServices:    cfg.DenyServices,
-		AllowServices:   cfg.AllowServices,
-		APIKey:          cfg.APIKey,
-		MaxBodyBytes:    cfg.ConfigMaxKB * 1024,
-		DefaultConfigID: cfg.DefaultConfigID,
-		Version:         version,
+		Notifier:      notify.NewApprise(),
+		StatelessURLs: cfg.StatelessURLs,
+		RecursionMax:  cfg.RecursionMax,
+		DenyServices:  cfg.DenyServices,
+		AllowServices: cfg.AllowServices,
+		APIKey:        cfg.APIKey,
+		Version:       version,
 	})
 
 	srv := &http.Server{

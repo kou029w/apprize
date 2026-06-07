@@ -15,9 +15,6 @@ WORKDIR /app
 COPY --from=build /out/apprize /usr/local/bin/apprize
 
 ENV APPRIZE_BIND=:8000
-ENV APPRIZE_DB_PATH=/data/apprize.db
-
-VOLUME ["/data"]
 EXPOSE 8000
 
 ENTRYPOINT ["/usr/local/bin/apprize"]

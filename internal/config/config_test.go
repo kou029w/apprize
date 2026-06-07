@@ -2,42 +2,28 @@ package config
 
 import "testing"
 
-func TestFromEnv_ConfigMaxLengthDefault(t *testing.T) {
-	t.Setenv("APPRIZE_CONFIG_MAX_LENGTH", "")
+func TestFromEnv_BindDefault(t *testing.T) {
+	t.Setenv("APPRIZE_BIND", "")
+	t.Setenv("HTTP_PORT", "")
 	cfg := FromEnv()
-	if cfg.ConfigMaxKB != 512 {
-		t.Fatalf("ConfigMaxKB = %d, want 512", cfg.ConfigMaxKB)
+	if cfg.Bind != ":8000" {
+		t.Fatalf("Bind = %q, want %q", cfg.Bind, ":8000")
 	}
 }
 
-func TestFromEnv_ConfigMaxLengthFromEnv(t *testing.T) {
-	t.Setenv("APPRIZE_CONFIG_MAX_LENGTH", "1024")
+func TestFromEnv_BindFromHTTPPort(t *testing.T) {
+	t.Setenv("APPRIZE_BIND", "")
+	t.Setenv("HTTP_PORT", "9000")
 	cfg := FromEnv()
-	if cfg.ConfigMaxKB != 1024 {
-		t.Fatalf("ConfigMaxKB = %d, want 1024", cfg.ConfigMaxKB)
+	if cfg.Bind != ":9000" {
+		t.Fatalf("Bind = %q, want %q", cfg.Bind, ":9000")
 	}
 }
 
-func TestFromEnv_ConfigMaxLengthInvalidFallsBack(t *testing.T) {
-	t.Setenv("APPRIZE_CONFIG_MAX_LENGTH", "0")
+func TestFromEnv_RecursionMaxDefault(t *testing.T) {
+	t.Setenv("APPRIZE_RECURSION_MAX", "")
 	cfg := FromEnv()
-	if cfg.ConfigMaxKB != 512 {
-		t.Fatalf("ConfigMaxKB = %d, want 512", cfg.ConfigMaxKB)
-	}
-}
-
-func TestFromEnv_DefaultConfigIDDefault(t *testing.T) {
-	t.Setenv("APPRIZE_DEFAULT_CONFIG_ID", "")
-	cfg := FromEnv()
-	if cfg.DefaultConfigID != "apprise" {
-		t.Fatalf("DefaultConfigID = %q, want %q", cfg.DefaultConfigID, "apprise")
-	}
-}
-
-func TestFromEnv_DefaultConfigIDFromEnv(t *testing.T) {
-	t.Setenv("APPRIZE_DEFAULT_CONFIG_ID", "my-default")
-	cfg := FromEnv()
-	if cfg.DefaultConfigID != "my-default" {
-		t.Fatalf("DefaultConfigID = %q, want %q", cfg.DefaultConfigID, "my-default")
+	if cfg.RecursionMax != 1 {
+		t.Fatalf("RecursionMax = %d, want 1", cfg.RecursionMax)
 	}
 }

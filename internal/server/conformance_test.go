@@ -15,7 +15,6 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
-	"errors"
 	"io"
 	"mime/multipart"
 	"net/http"
@@ -25,7 +24,6 @@ import (
 
 	"git.fogtype.com/nebel/apprize/internal/notify"
 	"git.fogtype.com/nebel/apprize/internal/server"
-	"git.fogtype.com/nebel/apprize/internal/store"
 	"github.com/getkin/kin-openapi/openapi3"
 )
 
@@ -76,19 +74,6 @@ func failNotifier() notify.Notifier {
 	})
 }
 
-var errBoom = errors.New("boom")
-
-// errStore fails every operation (drives the 500 path).
-type errStore struct{}
-
-func (errStore) Get(context.Context, string) (store.Entry, bool, error) {
-	return store.Entry{}, false, errBoom
-}
-func (errStore) Put(context.Context, store.Entry) error       { return errBoom }
-func (errStore) Delete(context.Context, string) (bool, error) { return false, errBoom }
-func (errStore) List(context.Context) ([]string, error)       { return nil, errBoom }
-func (errStore) Close() error                                 { return nil }
-
 // ---------------------------------------------------------------------------
 // Server construction
 // ---------------------------------------------------------------------------
@@ -97,7 +82,6 @@ func (errStore) Close() error                                 { return nil }
 func baseDeps() server.Deps {
 	return server.Deps{
 		Notifier:     okNotifier(),
-		Store:        store.NewMemory(),
 		RecursionMax: 1,
 		Version:      "test",
 	}
@@ -110,14 +94,6 @@ func newServer(mods ...func(*server.Deps)) http.Handler {
 		m(&d)
 	}
 	return server.New(d)
-}
-
-// seed stores an entry in the given store, failing the test on error.
-func seed(t *testing.T, st store.Store, e store.Entry) {
-	t.Helper()
-	if err := st.Put(context.Background(), e); err != nil {
-		t.Fatalf("seeding store: %v", err)
-	}
 }
 
 // ---------------------------------------------------------------------------

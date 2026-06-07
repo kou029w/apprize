@@ -1,7 +1,3 @@
 .git
 .github
-bin
 apprize
-apprize.db
-*.db
-tmp
