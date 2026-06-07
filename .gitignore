@@ -1,0 +1,8 @@
+# Build output
+/apprize
+/apprize.exe
+
+# Runtime SQLite databases (and WAL/SHM sidecars)
+*.db
+*.db-wal
+*.db-shm
