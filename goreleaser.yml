@@ -1,0 +1,4 @@
+# yaml-language-server: $schema=https://goreleaser.com/static/schema.json
+gitea_urls:
+  api: https://git.fogtype.com/api/v1
+  download: https://git.fogtype.com
