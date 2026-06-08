@@ -4,24 +4,34 @@ A drop-in, single-binary reimplementation of the [caronc/apprise-api](https://gi
 
 ## Quick start
 
-### Docker Hub
-
 ```sh
+# Docker
 docker run --rm -p 8000:8000 fogtype/apprize:latest
-```
 
-### Go install
+# Podman
+podman run --rm -p 8000:8000 fogtype/apprize:latest
 
-```sh
+# Go install
 go install git.fogtype.com/nebel/apprize@latest
 apprize --bind :8000
-```
 
-### Build from source
-
-```sh
+# Build from source
+git clone https://git.fogtype.com/nebel/apprize
+cd apprize
 go build
 ./apprize --bind :8000
+```
+
+### Docker Compose
+
+```yaml
+# compose.yml
+services:
+  apprize:
+    image: fogtype/apprize:latest
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
 ```
 
 ## Configuration
