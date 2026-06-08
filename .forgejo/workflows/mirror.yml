@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+name: mirror
+on:
+  push:
+  workflow_dispatch:
+concurrency:
+  group: mirror
+jobs:
+  github:
+    runs-on: self-hosted
+    steps:
+      - run: apk add git openssh
+      - name: Set up SSH key
+        run: |
+          install -m 700 -d ~/.ssh
+          install -m 600 <(echo "${DEPLOY_KEY}") ~/.ssh/id_ed25519
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+        env:
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+      - name: Prune and mirror
+        run: |
+          git clone --mirror "https://${GITEA_TOKEN}@${GITHUB_SERVER_URL#https://}/${GITHUB_REPOSITORY}.git" apprize.git
+          git -C apprize.git push --mirror git@github.com:kou029w/apprize.git
+        env:
+          GITEA_TOKEN: ${{ github.GITEA_TOKEN }}
