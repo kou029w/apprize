@@ -2,25 +2,27 @@
 
 A drop-in, single-binary reimplementation of the [caronc/apprise-api](https://github.com/caronc/apprise-api) HTTP API in Go. Speaks the same stateless routes and response shapes as Apprise API `swagger.yaml` v1.5.0, backed by [unraid/apprise-go](https://github.com/unraid/apprise-go) for delivery — pure Go, no cgo, no Python runtime.
 
-## Build & run
+## Quick start
 
-Requires Go 1.26+.
+### Docker Hub
+
+```sh
+docker run --rm -p 8000:8000 fogtype/apprize:latest
+```
+
+### Go install
+
+```sh
+go install git.fogtype.com/nebel/apprize@latest
+apprize --bind :8000
+```
+
+### Build from source
 
 ```sh
 go build
 ./apprize --bind :8000
 ```
-
-### Docker
-
-```sh
-docker build -t apprize .
-docker run --rm -p 8000:8000 apprize
-```
-
-The image runs `apprize` directly and defaults to:
-
-- `APPRIZE_BIND=:8000`
 
 ## Configuration
 
