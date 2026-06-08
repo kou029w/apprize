@@ -15,7 +15,7 @@ Send a notification:
 ```sh
 # ntfy - watch it land at https://ntfy.sh/apprize-demo
 curl localhost:8000/notify \
-  -d 'urls=ntfy://apprize-demo' \
+  -d 'urls=ntfys://apprize-demo' \
   -d body=hello
 
 # email - needs real SMTP credentials
