@@ -24,6 +24,10 @@ go build
 
 ### Docker Compose
 
+```sh
+docker compose up -d
+```
+
 ```yaml
 # compose.yml
 services:
