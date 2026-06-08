@@ -4,14 +4,38 @@ A drop-in, single-binary reimplementation of the [caronc/apprise-api](https://gi
 
 ## Quick start
 
+Start the server:
+
+```sh
+docker run --rm -p 8000:8000 fogtype/apprize
+```
+
+Send a notification:
+
+```sh
+# ntfy - watch it land at https://ntfy.sh/apprize-demo
+curl localhost:8000/notify \
+  -d 'urls=ntfy://apprize-demo' \
+  -d body=hello
+
+# email - needs real SMTP credentials
+curl localhost:8000/notify \
+  -d 'urls=mailtos://user:pass@gmail.com' \
+  -d body=hello
+```
+
+[other services](https://appriseit.com/services/)
+
+## Install
+
 ```sh
 # Docker
-docker run --rm -p 8000:8000 fogtype/apprize:latest
+docker run --rm -p 8000:8000 fogtype/apprize
 
 # Podman
-podman run --rm -p 8000:8000 fogtype/apprize:latest
+podman run --rm -p 8000:8000 fogtype/apprize
 
-# Go install
+# Go
 go install git.fogtype.com/nebel/apprize@latest
 apprize --bind :8000
 
@@ -24,18 +48,18 @@ go build
 
 ### Docker Compose
 
-```sh
-docker compose up -d
-```
-
 ```yaml
 # compose.yml
 services:
   apprize:
-    image: fogtype/apprize:latest
+    image: fogtype/apprize
     restart: unless-stopped
     ports:
       - "8000:8000"
+```
+
+```sh
+docker compose up -d
 ```
 
 ## Configuration
