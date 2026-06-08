@@ -20,6 +20,7 @@ jobs:
       - name: Prune and mirror
         run: |
           git clone --mirror "https://${GITEA_TOKEN}@${GITHUB_SERVER_URL#https://}/${GITHUB_REPOSITORY}.git" apprize.git
+          git -C apprize.git for-each-ref --format='delete %(refname)' refs/pull | git -C apprize.git update-ref --stdin
           git -C apprize.git push --mirror git@github.com:kou029w/apprize.git
         env:
           GITEA_TOKEN: ${{ github.GITEA_TOKEN }}
