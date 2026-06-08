@@ -63,3 +63,8 @@ and omits the persistent-configuration half of the API entirely:
 ## License
 
 [GNU AGPL-3.0](LICENSE)
+
+## Acknowledgements
+
+- [caronc/apprise-api](https://github.com/caronc/apprise-api) for the original API design and specification.
+- [unraid/apprise-go](https://github.com/unraid/apprise-go) for the Go notification library.
