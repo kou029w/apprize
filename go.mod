@@ -4,7 +4,7 @@ go 1.26.4
 
 require (
 	github.com/getkin/kin-openapi v0.140.0
-	github.com/unraid/apprise-go v0.2.6
+	github.com/unraid/apprise-go v0.2.7
 	gopkg.in/yaml.v3 v3.0.1
 )
 
@@ -16,7 +16,7 @@ require (
 	github.com/oasdiff/yaml v0.1.0 // indirect
 	github.com/oasdiff/yaml3 v0.0.13 // indirect
 	github.com/santhosh-tekuri/jsonschema/v6 v6.0.2 // indirect
-	golang.org/x/crypto v0.51.0 // indirect
-	golang.org/x/net v0.54.0 // indirect
-	golang.org/x/text v0.37.0 // indirect
+	golang.org/x/crypto v0.53.0 // indirect
+	golang.org/x/net v0.56.0 // indirect
+	golang.org/x/text v0.38.0 // indirect
 )
