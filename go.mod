@@ -4,7 +4,7 @@ go 1.26.4
 
 require (
 	github.com/getkin/kin-openapi v0.146.0
-	github.com/unraid/apprise-go v0.3.0
+	github.com/unraid/apprise-go v0.3.1
 	gopkg.in/yaml.v3 v3.0.1
 )
 

@@ -54,6 +54,8 @@ github.com/unraid/apprise-go v0.2.8 h1:H2VpHuneNLfw7yqKxH0nrZNkmRixhfIc94Ij9eemi
 github.com/unraid/apprise-go v0.2.8/go.mod h1:LEKbEzvNRhJ5O98HYug8ouDd4A82bTO+ZHD83ksMO38=
 github.com/unraid/apprise-go v0.3.0 h1:IoJXG5JqOFrPVM7LjywL6qsllOHDpwCvcA2Bw8/cxjY=
 github.com/unraid/apprise-go v0.3.0/go.mod h1:Rmw39Jh6SPBSMKoG6Uwr2iDXEQ3m3Bb5Mf4P0Gdo9UA=
+github.com/unraid/apprise-go v0.3.1 h1:amZiY+ewz40I8xdONHUCX/e8PkgweRlHrrv4SHs2yYE=
+github.com/unraid/apprise-go v0.3.1/go.mod h1:Rmw39Jh6SPBSMKoG6Uwr2iDXEQ3m3Bb5Mf4P0Gdo9UA=
 golang.org/x/crypto v0.51.0 h1:IBPXwPfKxY7cWQZ38ZCIRPI50YLeevDLlLnyC5wRGTI=
 golang.org/x/crypto v0.51.0/go.mod h1:8AdwkbraGNABw2kOX6YFPs3WM22XqI4EXEd8g+x7Oc8=
 golang.org/x/crypto v0.53.0 h1:QZ4Muo8THX6CizN2vPPd5fBGHyogrdK9fG4wLPFUsto=
