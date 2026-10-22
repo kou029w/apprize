@@ -3,7 +3,7 @@ module git.fogtype.com/nebel/apprize
 go 1.26.4
 
 require (
-	github.com/getkin/kin-openapi v0.151.0
+	github.com/getkin/kin-openapi v0.152.0
 	github.com/unraid/apprise-go v0.3.3
 	gopkg.in/yaml.v3 v3.0.1
 )
