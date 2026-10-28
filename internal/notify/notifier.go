@@ -8,7 +8,7 @@ import "context"
 type Options struct {
 	Title       string // optional message title
 	Type        string // info|success|warning|failure (empty = info)
-	InputFormat string // text|markdown|html (empty = text)
+	InputFormat string // text|markdown|html (empty = pass-through)
 }
 
 // Result describes the outcome of delivering to a single target URL.

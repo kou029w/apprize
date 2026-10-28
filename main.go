@@ -38,6 +38,7 @@ func run(cfg config.Config) error {
 		RecursionMax:  cfg.RecursionMax,
 		DenyServices:  cfg.DenyServices,
 		AllowServices: cfg.AllowServices,
+		DefaultFormat: cfg.DefaultFormat,
 		APIKey:        cfg.APIKey,
 		Version:       version,
 	})

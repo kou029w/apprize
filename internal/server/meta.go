@@ -19,6 +19,14 @@ func (s *server) handleStatus(w http.ResponseWriter, r *http.Request) {
 	writeJSON(w, http.StatusOK, map[string]any{
 		"attach_lock": true,
 		"config_lock": false,
+		// apprize delivers no attachments, stores nothing and has no
+		// per-config credentials, so every caller is an administrator.
+		"attach_size":       0,
+		"max_attachments":   0,
+		"stateful_enabled":  false,
+		"stateless_enabled": true,
+		"degraded":          false,
+		"privilege":         "admin",
 		"status": map[string]any{
 			"persistent_storage": false,
 			"can_write_config":   false,

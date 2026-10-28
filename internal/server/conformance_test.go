@@ -63,6 +63,21 @@ func okNotifier() notify.Notifier {
 	})
 }
 
+type captured struct {
+	urls []string
+	body string
+	opts notify.Options
+}
+
+// captureNotifier reports success and records the call into c.
+func captureNotifier(c *captured) notify.Notifier {
+	ok := okNotifier()
+	return notifierFunc(func(ctx context.Context, urls []string, body string, opts notify.Options) ([]notify.Result, error) {
+		*c = captured{urls: urls, body: body, opts: opts}
+		return ok.Notify(ctx, urls, body, opts)
+	})
+}
+
 // failNotifier reports failure for every URL (drives the 424 path).
 func failNotifier() notify.Notifier {
 	return notifierFunc(func(_ context.Context, urls []string, _ string, _ notify.Options) ([]notify.Result, error) {

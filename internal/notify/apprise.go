@@ -55,9 +55,9 @@ func (a *Apprise) Notify(_ context.Context, urls []string, body string, opts Opt
 			sendOpts = append(sendOpts, apprise.WithNotifyType(t))
 		}
 	}
-	if opts.InputFormat != "" {
-		sendOpts = append(sendOpts, apprise.WithInputFormat(opts.InputFormat))
-	}
+	// apprise-go converts from "text" unless told otherwise, and an empty
+	// format turns conversion off, so pass it even when empty.
+	sendOpts = append(sendOpts, apprise.WithInputFormat(opts.InputFormat))
 
 	err := client.Send(body, sendOpts...)
 	failed := failuresByURL(err)

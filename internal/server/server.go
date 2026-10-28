@@ -18,6 +18,7 @@ type Deps struct {
 	RecursionMax  int      // APPRIZE_RECURSION_MAX
 	DenyServices  []string // APPRIZE_DENY_SERVICES
 	AllowServices []string // APPRIZE_ALLOW_SERVICES
+	DefaultFormat string   // APPRIZE_DEFAULT_FORMAT (empty = pass-through)
 	APIKey        string   // optional simple API secret (empty = no auth)
 	MaxBodyBytes  int64    // request body limit; 0 = sensible default; test-only
 

@@ -16,6 +16,7 @@ type Config struct {
 	RecursionMax  int
 	DenyServices  []string
 	AllowServices []string
+	DefaultFormat string
 }
 
 // FromEnv builds a Config from environment variables, applying defaults.
@@ -27,6 +28,7 @@ func FromEnv() Config {
 		RecursionMax:  parseInt(os.Getenv("APPRIZE_RECURSION_MAX"), 1),
 		DenyServices:  splitList(os.Getenv("APPRIZE_DENY_SERVICES")),
 		AllowServices: splitList(os.Getenv("APPRIZE_ALLOW_SERVICES")),
+		DefaultFormat: strings.ToLower(strings.TrimSpace(os.Getenv("APPRIZE_DEFAULT_FORMAT"))),
 	}
 }
 
