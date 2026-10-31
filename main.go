@@ -8,6 +8,7 @@ import (
 	"log"
 	"net/http"
 	"os/signal"
+	"runtime/debug"
 	"syscall"
 	"time"
 
@@ -16,8 +17,12 @@ import (
 	"git.fogtype.com/nebel/apprize/internal/server"
 )
 
-// version is overridable at build time via -ldflags.
-var version = "dev"
+func version() string {
+	if info, ok := debug.ReadBuildInfo(); ok && info.Main.Version != "" {
+		return info.Main.Version
+	}
+	return "dev"
+}
 
 func main() {
 	cfg := config.FromEnv()
@@ -40,7 +45,7 @@ func run(cfg config.Config) error {
 		AllowServices: cfg.AllowServices,
 		DefaultFormat: cfg.DefaultFormat,
 		APIKey:        cfg.APIKey,
-		Version:       version,
+		Version:       version(),
 	})
 
 	srv := &http.Server{
@@ -53,7 +58,7 @@ func run(cfg config.Config) error {
 	defer stop()
 
 	go func() {
-		log.Printf("apprize %s listening on %s", version, cfg.Bind)
+		log.Printf("apprize %s listening on %s", version(), cfg.Bind)
 		if err := srv.ListenAndServe(); err != nil && !errors.Is(err, http.ErrServerClosed) {
 			log.Printf("server error: %v", err)
 			stop()
