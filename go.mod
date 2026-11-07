@@ -3,7 +3,7 @@ module git.fogtype.com/nebel/apprize
 go 1.26.4
 
 require (
-	github.com/getkin/kin-openapi v0.152.0
+	github.com/getkin/kin-openapi v0.153.0
 	github.com/unraid/apprise-go v0.4.0
 	gopkg.in/yaml.v3 v3.0.1
 )
@@ -20,6 +20,7 @@ require (
 	github.com/oasdiff/yaml3 v0.0.14 // indirect
 	github.com/rabbitmq/amqp091-go v1.16.0 // indirect
 	github.com/santhosh-tekuri/jsonschema/v6 v6.0.3 // indirect
+	go.yaml.in/yaml/v4 v4.0.0 // indirect
 	golang.org/x/crypto v0.58.0 // indirect
 	golang.org/x/mod v0.42.0 // indirect
 	golang.org/x/net v0.61.0 // indirect

@@ -35,6 +35,8 @@ github.com/getkin/kin-openapi v0.151.0 h1:p8NIstL53h620DnlO9R4pR4QRkEzJ3jbw9flb4
 github.com/getkin/kin-openapi v0.151.0/go.mod h1:1+BHDzstro+P5CKtPy1X4PfofnFgmRe6uvMy9+r9fKY=
 github.com/getkin/kin-openapi v0.152.0 h1:XRVo77lMRyOGMHf1paMu9lxX3wzuQDZeprssZJnz/x8=
 github.com/getkin/kin-openapi v0.152.0/go.mod h1:1+BHDzstro+P5CKtPy1X4PfofnFgmRe6uvMy9+r9fKY=
+github.com/getkin/kin-openapi v0.153.0 h1:Qo4qWW+Pj8o90LUTE6MDyG5TJAtWnfvrcWOBcWg7eBw=
+github.com/getkin/kin-openapi v0.153.0/go.mod h1:mEZ6Ip3gyqPDokUsJsttZhv3r46/NeH3tGwrFUMcoSE=
 github.com/go-openapi/jsonpointer v0.22.5 h1:8on/0Yp4uTb9f4XvTrM2+1CPrV05QPZXu+rvu2o9jcA=
 github.com/go-openapi/jsonpointer v0.22.5/go.mod h1:gyUR3sCvGSWchA2sUBJGluYMbe1zazrYWIkWPjjMUY0=
 github.com/go-openapi/swag/jsonname v0.25.5 h1:8p150i44rv/Drip4vWI3kGi9+4W9TdI3US3uUYSFhSo=
@@ -88,6 +90,8 @@ github.com/unraid/apprise-go v0.3.4 h1:1WMVRvVZsQKAc7SUfb+jB+wfvkrwqeNWK1vg2S6Ad
 github.com/unraid/apprise-go v0.3.4/go.mod h1:8CCDpeA8uBZQbV9lZm06L/jPmX5WOD1UCBF6l9fsL7M=
 github.com/unraid/apprise-go v0.4.0 h1:SfUmd+ihysko0IT59kkWXxLMIsZ3tp/Uk5q8F/ObBBY=
 github.com/unraid/apprise-go v0.4.0/go.mod h1:yfcQmaC+OjT0LD+Kp36GKDoxLABD6uFlNNAB6vNo0YU=
+go.yaml.in/yaml/v4 v4.0.0 h1:/LG1pNO84Z4l603j/xMn69CcS5OYhMQ/f7l2LoQUGuw=
+go.yaml.in/yaml/v4 v4.0.0/go.mod h1:aZqd9kCMsGL7AuUv/m/PvWLdg5sjJsZ4oHDEnfPPfY0=
 golang.org/x/crypto v0.51.0 h1:IBPXwPfKxY7cWQZ38ZCIRPI50YLeevDLlLnyC5wRGTI=
 golang.org/x/crypto v0.51.0/go.mod h1:8AdwkbraGNABw2kOX6YFPs3WM22XqI4EXEd8g+x7Oc8=
 golang.org/x/crypto v0.53.0 h1:QZ4Muo8THX6CizN2vPPd5fBGHyogrdK9fG4wLPFUsto=
